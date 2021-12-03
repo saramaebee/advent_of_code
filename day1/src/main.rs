@@ -1,6 +1,11 @@
 fn main() {
 	let my_inp = read_lines();
-	count_increases(my_inp);
+
+
+	
+	println!("Part 1: {:?}", part_1_solution(&my_inp));
+	println!("Part 2: {:?}", part_2_solution(&my_inp));
+
 }
 
 fn read_lines() -> Vec<u32> {
@@ -9,9 +14,9 @@ fn read_lines() -> Vec<u32> {
 	input.lines().map(|l| l.parse().unwrap()).collect()
 }
 
-fn count_increases(lines: Vec<u32>) {
+fn part_1_solution(lines: &Vec<u32>) -> u32 {
 
-	let mut counter = 0;
+	let mut counter: u32 = 0;
 	let mut iter = lines.into_iter().peekable();
 
 	while let Some(next_value) = iter.next() {
@@ -24,6 +29,23 @@ fn count_increases(lines: Vec<u32>) {
 		}
 	}
 
-	println!("{}", counter.to_string());
+	return counter;
+}
 
+fn part_2_solution(lines: &Vec<u32>) -> u32 {
+
+	let mut counter: u32 = 0;
+	let mut previous_value = None;
+
+	for window in lines.windows(3) {
+		let sum = window.iter().sum::<u32>();
+		if let Some(prev) = previous_value {
+			if prev < sum {
+				counter += 1;
+			}
+		}
+		previous_value = Some(sum);
+	}
+
+	return counter;
 }
