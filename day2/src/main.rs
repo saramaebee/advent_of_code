@@ -46,7 +46,7 @@ fn part_2(input: &Vec<Instruction>) -> Submarine {
 fn read_lines() -> Vec<Instruction> {
 	let input = include_str!("input.txt");
 	
-    input.lines().map(|l| parse_instruction(l)).collect()
+	input.lines().map(|l| parse_instruction(l)).collect()
 }
 
 fn parse_instruction(instruction: &str) -> Instruction {
@@ -54,23 +54,23 @@ fn parse_instruction(instruction: &str) -> Instruction {
 	.split_whitespace()
 	.take(2)
 	.collect::<Vec<&str>>();
-    if let [dir, amt] = &t[..] {
+	if let [dir, amt] = &t[..] {
 		match dir {
 			&"forward" => return Instruction::Forward(amt.parse::<u32>().unwrap()),
-            &"down" => return Instruction::Down(amt.parse::<u32>().unwrap()),
-            &"up" => return Instruction::Up(amt.parse::<u32>().unwrap()),
-            &"aim" => return Instruction::Aim(amt.parse::<u32>().unwrap()),
-            _ => panic!("invalid instruction"),
-        }
-    } else {
+			&"down" => return Instruction::Down(amt.parse::<u32>().unwrap()),
+			&"up" => return Instruction::Up(amt.parse::<u32>().unwrap()),
+			&"aim" => return Instruction::Aim(amt.parse::<u32>().unwrap()),
+			_ => panic!("invalid instruction"),
+		}
+	} else {
 		panic!("owo what's wrong");
-    }
+	}
 }
 
 struct Submarine {
 	hor_poz: u32,
-    depth: u32,
-    aim: Option<u32>,
+	depth: u32,
+	aim: Option<u32>,
 }
 
 impl std::fmt::Display for Submarine {
@@ -78,24 +78,24 @@ impl std::fmt::Display for Submarine {
 		if let Some(_aim) = self.aim {
 			write!(
 				f,
-                "(Horizontal position: {}, Depth: {}, Aim: {})",
-                self.hor_poz, self.depth, _aim
-            )
-        } else {
+				"(Horizontal position: {}, Depth: {}, Aim: {})",
+				self.hor_poz, self.depth, _aim
+			)
+		} else {
 			write!(
 				f,
-                "(Horizontal position: {}, Depth: {})",
-                self.hor_poz, self.depth
-            )
-        }
-    }
+				"(Horizontal position: {}, Depth: {})",
+				self.hor_poz, self.depth
+			)
+		}
+	}
 }
 
 enum Instruction {
 	Forward(u32),
-    Down(u32),
-    Up(u32),
-    Aim(u32),
+	Down(u32),
+	Up(u32),
+	Aim(u32),
 }
 
 fn main() {
