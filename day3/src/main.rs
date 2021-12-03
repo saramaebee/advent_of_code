@@ -4,11 +4,8 @@ fn part_1(measurements: Vec<String>) {
 
 	for _m in measurements {
 		let m: Vec<&str> = _m.split("").skip(1).collect();
-		// println!("{:?}", _m);
-		// println!("{:?}", m);
 
 		for i in 0..m.len()-1 {
-			// println!("{}", m[i]);
 			count_of_1[i] += m[i].parse::<u32>().unwrap();
 		}
 	}
@@ -18,10 +15,42 @@ fn part_1(measurements: Vec<String>) {
 	let gamma: isize = isize::from_str_radix(_gamma.join("").as_str(), 2).unwrap();
 	let epsilon: isize = isize::from_str_radix(_epsilon.join("").as_str(), 2).unwrap();
 
-	println!("{}", gamma);
-	println!("{}", epsilon);
 	println!("Power Consumption: {}", gamma * epsilon)
 	
+}
+
+fn part_2(_measurements: Vec<String>) {
+	// oxygen rating
+	let mut measurements = _measurements.clone();
+	let mut i = 0;
+
+	while measurements.len() > 1 && i < measurements[0].len() {
+		let x = measurements.clone().iter().filter(|l| l.chars().nth(i).unwrap() == '1').count();
+		measurements = measurements.iter().filter(|l| {
+			l.chars().nth(i).unwrap() == if x as f64 >= (measurements.len() as f64 / 2 as f64) { '1' } else { '0' }
+		}).cloned().collect();
+		i += 1;
+	}
+	
+	let oxygen_rating = isize::from_str_radix(measurements[0].as_str(), 2).unwrap();
+	
+	// co2 rating
+	
+	measurements = _measurements.clone();
+	i = 0;
+	
+	while measurements.len() > 1 && i < measurements[0].len() {
+		let x = measurements.clone().iter().filter(|l| l.chars().nth(i).unwrap() == '1').count();
+		measurements = measurements.iter().filter(|l| {
+			l.chars().nth(i).unwrap() == if (x as f64) < (measurements.len() as f64 / 2 as f64) { '1' } else { '0' }
+		}).cloned().collect();
+		i += 1;
+	}
+	
+	let co2_rating = isize::from_str_radix(measurements[0].as_str(), 2).unwrap();
+
+	println!("Life Support Rating: {}", oxygen_rating * co2_rating)
+
 }
 
 // setup below
@@ -30,6 +59,8 @@ fn main() {
 	let my_inp = read_lines();
 
 	part_1(my_inp.clone());
+	println!("----------");
+	part_2(my_inp.clone());
 }
 
 fn read_lines() -> Vec<String> {
