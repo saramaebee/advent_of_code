@@ -1,7 +1,5 @@
 fn main() {
 	let my_inp = read_lines();
-
-
 	
 	println!("Part 1: {:?}", part_1_solution(&my_inp));
 	println!("Part 2: {:?}", part_2_solution(&my_inp));
