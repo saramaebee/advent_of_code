@@ -8,7 +8,6 @@ fn main() {
 
 fn read_lines() -> Vec<u32> {
 	let input = include_str!("sonar_sweep.txt");
-
 	input.lines().map(|l| l.parse().unwrap()).collect()
 }
 
