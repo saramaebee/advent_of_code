@@ -1,4 +1,4 @@
-fn part_1(measurements: Vec<String>) {
+pub fn p1(measurements: Vec<String>) -> String {
 	let mut count_of_1: Vec<u32> = vec![0; measurements[0].len()];
 	let total_count: u32 = measurements.clone().into_iter().count().try_into().unwrap();
 
@@ -15,11 +15,10 @@ fn part_1(measurements: Vec<String>) {
 	let gamma: isize = isize::from_str_radix(_gamma.join("").as_str(), 2).unwrap();
 	let epsilon: isize = isize::from_str_radix(_epsilon.join("").as_str(), 2).unwrap();
 
-	println!("Power Consumption: {}", gamma * epsilon)
-	
+	(gamma * epsilon).to_string()
 }
 
-fn part_2(_measurements: Vec<String>) {
+pub fn p2(_measurements: Vec<String>) -> String {
 	// oxygen rating
 	let mut measurements = _measurements.clone();
 	let mut i = 0;
@@ -49,22 +48,6 @@ fn part_2(_measurements: Vec<String>) {
 	
 	let co2_rating = isize::from_str_radix(measurements[0].as_str(), 2).unwrap();
 
-	println!("Life Support Rating: {}", oxygen_rating * co2_rating)
+	(oxygen_rating * co2_rating).to_string()
 
-}
-
-// setup below
-
-fn main() {
-	let my_inp = read_lines();
-
-	part_1(my_inp.clone());
-	println!("----------");
-	part_2(my_inp.clone());
-}
-
-fn read_lines() -> Vec<String> {
-	let input = include_str!("input.txt");
-	
-	input.lines().map(|l| l.parse::<String>().unwrap()).collect()
 }

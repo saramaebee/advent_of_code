@@ -1,17 +1,6 @@
-fn main() {
-	let my_inp = read_lines();
-	
-	println!("Part 1: {:?}", part_1_solution(&my_inp));
-	println!("Part 2: {:?}", part_2_solution(&my_inp));
+pub fn p1(_lines: Vec<String>) -> String {
 
-}
-
-fn read_lines() -> Vec<u32> {
-	let input = include_str!("sonar_sweep.txt");
-	input.lines().map(|l| l.parse().unwrap()).collect()
-}
-
-fn part_1_solution(lines: &Vec<u32>) -> u32 {
+	let lines = map_to_u32(_lines);
 
 	let mut counter: u32 = 0;
 	let mut iter = lines.into_iter().peekable();
@@ -26,10 +15,12 @@ fn part_1_solution(lines: &Vec<u32>) -> u32 {
 		}
 	}
 
-	return counter;
+	counter.to_string()
 }
 
-fn part_2_solution(lines: &Vec<u32>) -> u32 {
+pub fn p2(_lines: Vec<String>) -> String {
+
+	let lines = map_to_u32(_lines);
 
 	let mut counter: u32 = 0;
 	let mut previous_value = None;
@@ -44,5 +35,9 @@ fn part_2_solution(lines: &Vec<u32>) -> u32 {
 		previous_value = Some(sum);
 	}
 
-	return counter;
+	counter.to_string()
+}
+
+fn map_to_u32(input: Vec<String>) -> Vec<u32> {
+	input.into_iter().map(|l| l.parse::<u32>().unwrap()).collect()
 }
