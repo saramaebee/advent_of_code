@@ -1,6 +1,6 @@
 pub fn p1(_input: Vec<String>) -> String {
 	let input: Vec<Line> = _input.into_iter().map(|l| parse_line(l))
-							.filter(|k| (k.p1.x == k.p2.x || k.p1.y == k.p2.y))
+							.filter(|k| is_horizontal(k) || is_vertical(k))
 							.collect();
 
 	let mut points: Vec<Coordinate> = Vec::new();
@@ -8,15 +8,29 @@ pub fn p1(_input: Vec<String>) -> String {
 	for line in input {
 		if is_horizontal(&line){
 			let y = line.p1.y;
-			for i in line.p1.x .. line.p2.x {
-				points.push(Coordinate{ x: i, y });
+
+			if line.p1.x < line.p2.x {
+				for i in line.p1.x .. line.p2.x + 1{
+					points.push(Coordinate{ x: i, y });
+				}
+			} else {
+				for i in line.p2.x .. line.p1.x {
+					points.push(Coordinate{ x: i, y });
+				}
 			}
 		}
 
 		if is_vertical(&line) {
 			let x = line.p1.x;
-			for i in line.p1.y .. line.p2.y {
-				points.push(Coordinate { x, y: i})
+			
+			if line.p1.y < line.p2.y {
+				for i in line.p1.y .. line.p2.y {
+					points.push(Coordinate { x, y: i})
+				}
+			} else {
+				for i in line.p2.y .. line.p1.y {
+					points.push(Coordinate { x, y: i})
+				}
 			}
 		}
 	}
@@ -34,7 +48,6 @@ pub fn p1(_input: Vec<String>) -> String {
 	let count_of_coords = count.iter().filter(|l| l.1 > 1).map(|m| *m).count();
 
 	count_of_coords.to_string()
-	
 }
 
 pub fn p2(_input: Vec<String>) -> String {
