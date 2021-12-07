@@ -1,19 +1,28 @@
 mod aoc2021d1;
 mod aoc2021d2;
 mod aoc2021d3;
+mod aoc2021d4;
+mod aoc2021d5;
+
+macro_rules! run {
+	($($day_num:tt $module:tt $file_name:tt),*) => (
+		$(
+			println!("| Day {}", $day_num);
+			println!("| | Part 1: {}", $module::p1(parse_input($file_name)));
+			println!("| | Part 2: {}", $module::p2(parse_input($file_name)));
+		)*
+	);
+}
 
 fn main() {
 	println!("Advent of Code");
-	println!("| Day 1");
-	println!("| | Part 1: {}", aoc2021d1::p1(parse_input("aoc2021d1.txt")));
-	println!("| | Part 2: {}", aoc2021d1::p2(parse_input("aoc2021d1.txt")));
-	println!("| Day 2");
-	println!("| | Part 1: {}", aoc2021d2::p1(parse_input("aoc2021d2.txt")));
-	println!("| | Part 2: {}", aoc2021d2::p2(parse_input("aoc2021d2.txt")));
-	println!("| Day 3");
-	println!("| | Part 1: {}", aoc2021d3::p1(parse_input("aoc2021d3.txt")));
-	println!("| | Part 2: {}", aoc2021d3::p2(parse_input("aoc2021d3.txt")));
-	
+	run!(
+		1 aoc2021d1 "aoc2021d1.txt", 
+		2 aoc2021d2 "aoc2021d2.txt", 
+		3 aoc2021d3 "aoc2021d3.txt",
+		4 aoc2021d4 "aoc2021d4.txt",
+		5 aoc2021d5 "aoc2021d5.txt"
+	);
 }
 
 fn parse_input(input_path: &str) -> Vec<String> {
