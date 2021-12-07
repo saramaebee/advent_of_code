@@ -15,7 +15,7 @@ pub fn p1(_input: Vec<String>) -> String {
 
 		if is_vertical(&line) {
 			let x = line.p1.x;
-			for i in line.p1.y .. line.p2.y  {
+			for i in line.p1.y .. line.p2.y {
 				points.push(Coordinate { x, y: i})
 			}
 		}
@@ -28,7 +28,7 @@ pub fn p1(_input: Vec<String>) -> String {
 			l.x == point.x && l.y == point.y
 		}).map(|m| *m).collect();
 
-		count.push((*point, filtered.len().try_into().unwrap()));
+		count.push((*point, filtered.len() as i32));
 	}
 
 	let count_of_coords = count.iter().filter(|l| l.1 > 1).map(|m| *m).count();
