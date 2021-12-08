@@ -1,4 +1,6 @@
-pub fn p1(_input: Vec<String>) -> String {
+pub fn old_p1(_input: Vec<String>) -> String {
+
+
 	let input: Vec<Line> = _input.into_iter().map(|l| parse_line(l))
 		.filter(|k| is_horizontal(k) || is_vertical(k))
 		.collect();
@@ -47,6 +49,12 @@ pub fn p1(_input: Vec<String>) -> String {
 	let count_of_coords = count.iter().filter(|l| l.1 > 1).map(|m| *m).count();
 
 	count_of_coords.to_string()
+}
+
+pub fn p1(_input: Vec<String>) -> String {
+	let input: Vec<Line> = _input.into_iter().map(|l| parse_line(l)).collect();
+
+	"No solution found".to_string()
 }
 
 pub fn p2(_input: Vec<String>) -> String {

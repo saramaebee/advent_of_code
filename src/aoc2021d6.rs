@@ -9,16 +9,14 @@ pub fn p1 (_input: Vec<String>) -> String {
 }
 
 pub fn p2 (_input: Vec<String>) -> String {
-	let mut input: Vec<isize> = _input[0].split(",").map(|l| l.parse::<isize>().unwrap()).collect();
+	let input: Vec<isize> = _input[0].split(",").map(|l| l.parse::<isize>().unwrap()).collect();
 
 	let mut fishes: Vec<isize> = Vec::new();
 	for i in 0..9 {
 		fishes.push(input.clone().into_iter().filter(|l| *l == i).collect::<Vec<isize>>().len().try_into().unwrap());
 	}
 
-	println!("{:?}", fishes);
-
-	for i in 0..256 {
+	for _ in 0..256 {
 		let fish_drain: isize  = fishes.drain(0..1).collect::<Vec<isize>>()[0];
 		fishes[6] += fish_drain;
 		fishes.push(fish_drain);
