@@ -1,36 +1,35 @@
 pub fn p1(_input: Vec<String>) -> String {
 	let input: Vec<Line> = _input.into_iter().map(|l| parse_line(l))
-							.filter(|k| is_horizontal(k) || is_vertical(k))
-							.collect();
+		.filter(|k| is_horizontal(k) || is_vertical(k))
+		.collect();
 
 	let mut points: Vec<Coordinate> = Vec::new();
 
 	for line in input {
 		if is_horizontal(&line){
 			let y = line.p1.y;
-
-			if line.p1.x < line.p2.x {
-				for i in line.p1.x .. line.p2.x + 1{
-					points.push(Coordinate{ x: i, y });
-				}
+			
+			let seq = if line.p1.x < line.p2.x {
+				line.p1.x .. line.p2.x
 			} else {
-				for i in line.p2.x .. line.p1.x {
-					points.push(Coordinate{ x: i, y });
-				}
+				line.p2.x .. line.p1.x
+			};
+			
+			for i in seq {
+				points.push(Coordinate{ x: i, y });
 			}
 		}
-
+			
 		if is_vertical(&line) {
 			let x = line.p1.x;
-			
-			if line.p1.y < line.p2.y {
-				for i in line.p1.y .. line.p2.y {
-					points.push(Coordinate { x, y: i})
-				}
+			let seq = if line.p1.y < line.p2.y {
+				line.p1.y .. line.p2.y
 			} else {
-				for i in line.p2.y .. line.p1.y {
-					points.push(Coordinate { x, y: i})
-				}
+				line.p2.y .. line.p1.y
+			};
+			
+			for i in seq {
+				points.push(Coordinate { x, y: i})
 			}
 		}
 	}

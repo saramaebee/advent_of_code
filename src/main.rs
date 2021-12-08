@@ -3,6 +3,7 @@ mod aoc2021d2;
 mod aoc2021d3;
 mod aoc2021d4;
 mod aoc2021d5;
+mod aoc2021d6;
 
 macro_rules! run {
 	($($day_num:tt $module:tt $file_name:tt),*) => (
@@ -17,11 +18,12 @@ macro_rules! run {
 fn main() {
 	println!("Advent of Code");
 	run!(
-		1 aoc2021d1 "aoc2021d1.txt", 
-		2 aoc2021d2 "aoc2021d2.txt", 
-		3 aoc2021d3 "aoc2021d3.txt",
-		4 aoc2021d4 "aoc2021d4.txt",
-		5 aoc2021d5 "aoc2021d5.txt"
+		// 1 aoc2021d1 "aoc2021d1.txt", 
+		// 2 aoc2021d2 "aoc2021d2.txt", 
+		// 3 aoc2021d3 "aoc2021d3.txt",
+		// 4 aoc2021d4 "aoc2021d4.txt",
+		// 5 aoc2021d5 "aoc2021d5.txt",
+		6 aoc2021d6 "aoc2021d6.txt"
 	);
 }
 
