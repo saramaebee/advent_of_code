@@ -5,6 +5,7 @@ mod aoc2021d4;
 mod aoc2021d5;
 mod aoc2021d6;
 mod aoc2021d7;
+mod aoc2021d9;
 
 macro_rules! run {
 	($($day_num:tt $module:tt $file_name:tt),*) => (
@@ -25,7 +26,9 @@ fn main() {
 		4 aoc2021d4 "aoc2021d4.txt",
 		5 aoc2021d5 "aoc2021d5.txt",
 		6 aoc2021d6 "aoc2021d6.txt",
-		7 aoc2021d7 "aoc2021d7.txt"
+		// 7 aoc2021d7 "aoc2021d7.txt",
+		// 8 aoc2021d8 "aoc2021d8.txt",
+		9 aoc2021d9 "aoc2021d9.txt"
 	);
 }
 

@@ -38,7 +38,6 @@ pub fn p2(_input: Vec<String>) -> String {
 			playing_boards.retain(|l| !check_board(l));
 		} else {
 			let sum = sum_of_board(&playing_boards[0]);
-			println!("Sum: {:?}; Last Num: {:?}; Winner: {:?}", sum, num_called, playing_boards);
 			return (sum * num_called).to_string();
 		}
 	}
