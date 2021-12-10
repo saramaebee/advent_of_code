@@ -26,10 +26,9 @@ pub fn p2 (_input: Vec<String>) -> String {
 }
 
 fn increment_day(_fish: Vec<i32>) -> Vec<i32> {
-	let mut return_vec = Vec::new();
 	let mut count_of_fish_born = 0;
-	return_vec = _fish.into_iter().map(|l| {
-		if &l < &1 {
+	let mut return_vec: Vec<i32> = _fish.into_iter().map(|l| {
+		if l < 1 {
 			count_of_fish_born += 1;
 			6
 		} else {
