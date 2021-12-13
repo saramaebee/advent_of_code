@@ -10,10 +10,7 @@ mod aoc2021d7;
 mod aoc2021d8;
 mod aoc2021d9;
 mod aoc2021d10;
-<<<<<<< HEAD
 mod aoc2021d11;
-=======
->>>>>>> b35578efc3ebb5a77dd9f4a2a2a6ae387ba8cf60
 
 macro_rules! run {
 	($($day_num:tt $module:tt $file_name:tt),*) => (
@@ -35,7 +32,6 @@ fn main() {
 		5 aoc2021d5 "aoc2021d5.txt",
 		6 aoc2021d6 "aoc2021d6.txt",
 		// 7 aoc2021d7 "aoc2021d7.txt",
-<<<<<<< HEAD
 		// 8 aoc2021d8 "aoc2021d8.txt",
 		9 aoc2021d9 "aoc2021d9.txt",
 		10 aoc2021d10 "aoc2021d10.txt",
@@ -60,11 +56,6 @@ fn main() {
 		// 29 aoc2021d29 "aoc2021d29.txt",
 		// 30 aoc2021d30 "aoc2021d30.txt",
 		// 31 aoc2021d31 "aoc2021d31.txt"
-=======
-		8 aoc2021d8 "aoc2021d8.txt",
-		9 aoc2021d9 "aoc2021d9.txt",
-		10 aoc2021d10 "aoc2021d10.txt"
->>>>>>> b35578efc3ebb5a77dd9f4a2a2a6ae387ba8cf60
 	);
 }
 
