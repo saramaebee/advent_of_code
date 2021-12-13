@@ -31,8 +31,8 @@ pub fn p2(_input: Vec<String>) -> String {
 
 	let mut playing_boards: Vec<Vec<Vec<isize>>> = extract_boards(_input);
 
-	for num_called in nums_called.iter().peekable() {
-		playing_boards = run_number(playing_boards, *num_called);
+	for num_called in nums_called {
+		playing_boards = run_number(playing_boards, num_called);
 
 		if playing_boards.len() > 1 {
 			playing_boards.retain(|l| !check_board(l));
@@ -49,16 +49,13 @@ pub fn p2(_input: Vec<String>) -> String {
 
 fn run_number(playing_boards: Vec<Vec<Vec<isize>>>, num_called: isize) -> Vec<Vec<Vec<isize>>> {
 	playing_boards.into_iter().map(|l| {
-		let k = l.clone().iter().map(|n| {
-			let o = n.clone().iter().map(|p| if *p == num_called { -1 } else { *p }).collect();
-			o
-		}).collect();
-		k
+		l.clone().iter().map(|n| {
+			n.clone().iter().map(|p| if *p == num_called { -1 } else { *p }).collect()
+		}).collect()
 	}).collect::<Vec<Vec<Vec<isize>>>>()
 }
 
 fn check_board(_board: &Vec<Vec<isize>>) -> bool {
-	
 	for row in _board {
 		if row.iter().all(|l| *l == -1) {
 			return true;
